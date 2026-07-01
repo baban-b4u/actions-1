@@ -45,6 +45,7 @@ jobs:
         with:
           name: dragon-txt-file
       - name: Read File
+        timeout-minutes: 1  
         run: | 
           cat dragon.txt
           sleep 600s
