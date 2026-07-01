@@ -35,6 +35,9 @@ jobs:
 
   deploy_job_3:
     needs: test_job_2
+    concurrency:
+      group: production-deployment
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifact
@@ -42,4 +45,6 @@ jobs:
         with:
           name: dragon-txt-file
       - name: Read File
-        run: cat dragon.txt
+        run: | 
+          cat dragon.txt
+          sleep 600s
